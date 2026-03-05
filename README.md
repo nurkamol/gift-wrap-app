@@ -2,7 +2,7 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-gold.svg)
 ![Shopify](https://img.shields.io/badge/Shopify-Theme%20App%20Extension-green)
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![Version](https://img.shields.io/badge/version-1.0.1-blue)
 
 A Shopify **Theme App Extension (TAE)** that adds per-item gift wrapping to any product page. Customers can select a wrap colour, add a personalised message, and the gift wrap line item is automatically linked to its parent product in the cart.
 

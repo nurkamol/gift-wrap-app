@@ -1,4 +1,4 @@
-name = "gift-wrap-app"
+name = "Gift Wrap App"
 client_id = "f3bff30b329ee03d9c1f09d92358aa92"
 
 # ── IMPORTANT ──────────────────────────────────────────────────────────────────
@@ -8,7 +8,7 @@ client_id = "f3bff30b329ee03d9c1f09d92358aa92"
 # and update redirect_urls below to match.
 # ──────────────────────────────────────────────────────────────────────────────
 application_url = "https://gift-wrap-app.pages.dev"
-embedded = false
+embedded = true
 
 [access_scopes]
 scopes = "write_products,read_products"
@@ -16,15 +16,14 @@ scopes = "write_products,read_products"
 [auth]
 redirect_urls = [
   "https://localhost:3000/auth/callback",
-  # Add your Cloudflare Pages URL here after deployment, e.g.:
-  # "https://gift-wrap-app.pages.dev/auth/callback"
+  "https://gift-wrap-app.pages.dev/auth/callback",
 ]
 
 [webhooks]
 api_version = "2024-07"
 
 [pos]
-embedded = false
+embedded = true
 
 [build]
 automatically_update_urls_on_dev = true

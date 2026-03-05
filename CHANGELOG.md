@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.1] — 2026-03-05
+
+### Fixed
+
+- **Admin page now renders inside Shopify admin** — added Shopify App Bridge v4
+  (`<script data-api-key>`) to `web/page.js` so the page loads embedded in the
+  admin frame instead of redirecting to an external URL
+- **`embedded = true`** set in `shopify.app.toml` (was `false`) — Shopify now
+  treats the app as embedded rather than opening it in a new tab
+- **Cloudflare Pages redirect URL** added to `shopify.app.toml` `redirect_urls`
+  (was only `localhost`)
+
+---
+
 ## [1.0.0] — 2026-03-05
 
 First stable public release. The extension went through six internal iterations

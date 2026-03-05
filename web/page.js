@@ -282,6 +282,9 @@ export function renderPage(shop) {
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gift Wrap App – Admin</title>
+  <!-- Shopify App Bridge v4 — renders this page inside the Shopify admin frame -->
+  <script src="https://cdn.shopify.com/shopifycloud/app-bridge.js"
+          data-api-key="f3bff30b329ee03d9c1f09d92358aa92"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
