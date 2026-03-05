@@ -8,6 +8,10 @@ A Shopify **Theme App Extension (TAE)** that adds per-item gift wrapping to any 
 
 Works on all Shopify plans — no Shopify Plus required.
 
+<a href="https://admin.shopify.com/oauth/install_custom_app?client_id=f3bff30b329ee03d9c1f09d92358aa92">
+  <img src="https://img.shields.io/badge/Install%20on%20Shopify-%2396BF48?style=for-the-badge&logo=shopify&logoColor=white" alt="Install on Shopify"/>
+</a>
+
 > 📖 **Ready to go live?** See [PUBLISHING.md](./PUBLISHING.md) for the full step-by-step production deploy guide.
 > 🏪 **Installing on a client store?** See [INSTALLING.md](./INSTALLING.md) for the per-store setup guide.
 > 📋 **What's new?** See [CHANGELOG.md](./CHANGELOG.md) for the full version history.
