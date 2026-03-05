@@ -1,0 +1,7 @@
+api_version = "2024-07"
+
+[[extensions]]
+uid = "cdcc23ce-d099-383d-126d-d9183408ec1c4212b666"
+type = "theme"
+name = "Per-Item Gift Wrapping"
+handle = "gift-wrapping"

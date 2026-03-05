@@ -1,0 +1,25 @@
+{
+  "name": "gift-wrap-app",
+  "version": "1.0.0",
+  "description": "Per-item gift wrapping Shopify Theme App Extension",
+  "author": {
+    "name": "Nurkamol Vakhidov",
+    "email": "nurkamol@gmail.com",
+    "url": "https://nurkamol.com"
+  },
+  "type": "module",
+  "scripts": {
+    "dev":     "shopify app dev",
+    "web":     "node web/index.js",
+    "deploy":  "shopify app deploy",
+    "build":   "shopify app build",
+    "cf-deploy": "wrangler pages deploy public --project-name gift-wrap-app"
+  },
+  "dependencies": {
+    "@shopify/app": "^3.58.2",
+    "@shopify/cli": "^3.91.0"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}

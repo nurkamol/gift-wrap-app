@@ -1,0 +1,184 @@
+{{ 'gift-wrap.css' | asset_url | stylesheet_tag }}
+
+{% assign gw_product = all_products[block.settings.gift_wrap_product] %}
+{% assign accent = block.settings.accent_color | default: '#c0a96e' %}
+
+<div
+  id="gift-wrap-container"
+  data-product-title="{{ product.title | escape }}"
+  data-product-id="{{ product.id }}"
+  data-gift-wrap-product-id="{{ gw_product.id }}"
+  data-hide-qty="{{ block.settings.hide_gift_wrap_qty }}"
+  data-one-per-product="true"
+  style="--gw-accent: {{ accent }};"
+  {{ block.shopify_attributes }}
+>
+  <div class="gw-header">
+    {% unless block.settings.header_icon == blank %}<span class="gw-icon">{{ block.settings.header_icon }}</span>{% endunless %}
+    <span class="gw-title">{{ block.settings.section_title }}</span>
+  </div>
+
+  <div class="gw-item">
+    <label class="gw-checkbox-label">
+      <input type="checkbox" class="gw-toggle" />
+      <span class="gw-checkbox-custom"></span>
+      <div class="gw-item-info">
+        <span class="gw-item-name">{{ product.title }}</span>
+        {% if product.selected_or_first_available_variant.title != 'Default Title' %}
+          <span class="gw-item-variant">{{ product.selected_or_first_available_variant.title }}</span>
+        {% endif %}
+      </div>
+      <span class="gw-price">+{{ block.settings.currency }} {{ block.settings.price }}</span>
+    </label>
+
+    <div class="gw-options" style="display:none;">
+
+      <div class="gw-colour-row">
+        <label class="gw-label">Wrap colour</label>
+        <select class="gw-colour-select">
+          <option value="">Select colour...</option>
+          {% if gw_product != empty %}
+            {% for variant in gw_product.variants %}
+              <option value="{{ variant.id }}">{{ variant.title }}</option>
+            {% endfor %}
+          {% else %}
+            <option value="" disabled>⚠ Please select a Gift Wrap Product in theme settings</option>
+          {% endif %}
+        </select>
+      </div>
+
+      {% if block.settings.show_message_field %}
+        <div class="gw-message-row">
+          <label class="gw-label">
+            Gift message
+            <span class="gw-optional">(optional)</span>
+          </label>
+          <textarea
+            class="gw-message-input"
+            placeholder="{{ block.settings.message_placeholder }}"
+            maxlength="200"
+            rows="2"
+          ></textarea>
+          <span class="gw-char-count">0 / 200</span>
+        </div>
+      {% endif %}
+
+    </div>
+
+    <div class="gw-status" style="display:none;">
+      <span class="gw-status-text">✓ Gift wrap added to this item</span>
+      {% if block.settings.show_remove_btn %}
+        <button type="button" class="gw-remove-btn">Remove</button>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script src="{{ 'gift-wrap.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Per-Item Gift Wrapping",
+  "target": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Gift Wrap Product"
+    },
+    {
+      "type": "product",
+      "id": "gift_wrap_product",
+      "label": "Gift Wrap Product",
+      "info": "Select your Gift Wrapping product. Its colour variants will populate the colour selector automatically — no manual setup needed."
+    },
+    {
+      "type": "header",
+      "content": "Display"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section title",
+      "default": "Add Gift Wrapping"
+    },
+    {
+      "type": "text",
+      "id": "price",
+      "label": "Display price (number only)",
+      "default": "10.00",
+      "info": "Shown next to each item. Use your base wrap price."
+    },
+    {
+      "type": "select",
+      "id": "currency",
+      "label": "Currency",
+      "options": [
+        { "value": "AED", "label": "AED – UAE Dirham" },
+        { "value": "USD", "label": "USD – US Dollar" },
+        { "value": "EUR", "label": "EUR – Euro" },
+        { "value": "GBP", "label": "GBP – British Pound" },
+        { "value": "SAR", "label": "SAR – Saudi Riyal" },
+        { "value": "KWD", "label": "KWD – Kuwaiti Dinar" },
+        { "value": "QAR", "label": "QAR – Qatari Riyal" }
+      ],
+      "default": "AED"
+    },
+    {
+      "type": "header",
+      "content": "Visual Customisation"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent colour",
+      "default": "#c0a96e",
+      "info": "Applied to the checkbox, price text and focus highlights."
+    },
+    {
+      "type": "text",
+      "id": "header_icon",
+      "label": "Header icon",
+      "default": "🎁",
+      "info": "Paste any emoji here — it appears before the section title. Leave blank to hide the icon."
+    },
+    {
+      "type": "header",
+      "content": "Gift Message"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_message_field",
+      "label": "Allow customers to add a gift message",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "message_placeholder",
+      "label": "Message field placeholder",
+      "default": "Write a personal message for this gift..."
+    },
+    {
+      "type": "header",
+      "content": "Cart Behaviour"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_gift_wrap_qty",
+      "label": "Hide quantity selector for Gift Wrapping in cart",
+      "default": true,
+      "info": "Recommended: prevents customers from changing Gift Wrapping quantity independently of the product."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_remove_btn",
+      "label": "Show Remove button on the gift wrap block",
+      "default": true,
+      "info": "Lets customers remove their gift wrap selection directly from the product page without opening the cart."
+    },
+    {
+      "type": "paragraph",
+      "content": "Gift wrap is always limited to one per product (duplicates are prevented automatically). Gift wrap is also automatically removed from the cart if its product is removed."
+    }
+  ]
+}
+{% endschema %}

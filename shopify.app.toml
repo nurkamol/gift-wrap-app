@@ -1,0 +1,31 @@
+name = "gift-wrap-app"
+client_id = "f3bff30b329ee03d9c1f09d92358aa92"
+
+# ── IMPORTANT ──────────────────────────────────────────────────────────────────
+# During local development this stays as localhost.
+# After deploying to Cloudflare Pages (see PUBLISHING.md), replace with:
+#   application_url = "https://gift-wrap-app.pages.dev"
+# and update redirect_urls below to match.
+# ──────────────────────────────────────────────────────────────────────────────
+application_url = "https://gift-wrap-app.pages.dev"
+embedded = false
+
+[access_scopes]
+scopes = "write_products,read_products"
+
+[auth]
+redirect_urls = [
+  "https://localhost:3000/auth/callback",
+  # Add your Cloudflare Pages URL here after deployment, e.g.:
+  # "https://gift-wrap-app.pages.dev/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-07"
+
+[pos]
+embedded = false
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "gift-wrap-app-dev.myshopify.com"
