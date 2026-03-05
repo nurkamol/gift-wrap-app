@@ -11,7 +11,9 @@ application_url = "https://gift-wrap-app.pages.dev"
 embedded = true
 
 [access_scopes]
-scopes = "write_products,read_products"
+# TAE-only app — no backend API calls are made.
+# read_products is used by the theme block's all_products Liquid object (resolved server-side).
+scopes = "read_products"
 
 [auth]
 redirect_urls = [
